@@ -1,0 +1,18 @@
+{% extends "ui_app/base.html" %}
+
+{% block title %}answers view{% endblock %}
+
+{% block content %}
+  <h1>answers view</h1>
+  {% for answer in answers %}
+    <h2>
+      <a href="{{ answer.get_absolute_url }}">
+        {{ answer.title }}
+      </a>
+    </h2>
+    <p class="date">
+      Published {{ answer.publish }} by {{ answer.author }}
+    </p>
+    {{ answer.body|truncatewords:60|linebreaks }}
+  {% endfor %}
+{% endblock %}
