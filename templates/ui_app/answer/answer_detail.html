@@ -5,7 +5,7 @@
 {% block content %}
   <h1>{{ answer.title }}</h1>
   <p class="date">
-    Published {{ answer.publish }} by {{ answer.author }}
+    Published {{ answer.created }} by {{ answer.author }}
   </p>
   {{ answer.body|linebreaks }}
 {% endblock %}

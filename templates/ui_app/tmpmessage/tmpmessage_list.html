@@ -1,18 +1,14 @@
 {% extends "ui_app/base.html" %}
 
-{% block title %}messages view{% endblock %}
+{% block title %}tmpmessages view{% endblock %}
 
 {% block content %}
-  <h1>messages view</h1>
-  {% for temppost in tempposts %}
-    <h2>
-      <a href="{{ temppost.get_absolute_url }}">
-        {{ temppost.title }}
-      </a>
-    </h2>
+  <h1>tmpmessages view</h1>
+  {% for tmpmessage in tmpmessages %}
+    <h4>{{ tmpmessage.title }</h4>
     <p class="date">
-      Created {{ temppost.created }} by {{ temppost.author }}
+      Created {{ tmpmessage.created }} by {{ tmpmessage.message_author }}
     </p>
-    {{ temppost.body|truncatewords:60|linebreaks }}
+    {{ tmpmessage.body|truncatewords:60|linebreaks }}
   {% endfor %}
 {% endblock %}
