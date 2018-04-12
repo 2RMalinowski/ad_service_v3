@@ -3,12 +3,14 @@
 {% block title %}tmpmessages view{% endblock %}
 
 {% block content %}
-  <h1>tmpmessages view</h1>
+  <h3>tmpmessages view</h3>
   {% for tmpmessage in tmpmessages %}
-    <h4>{{ tmpmessage.title }</h4>
+        <h4>{{ tmpmessage.advert_title }}</h4>
     <p class="date">
-      Created {{ tmpmessage.created }} by {{ tmpmessage.message_author }}
+      Created {{ tmpmessage.created }} by {{ tmpmessage.user }}
     </p>
     {{ tmpmessage.body|truncatewords:60|linebreaks }}
+
   {% endfor %}
 {% endblock %}
+

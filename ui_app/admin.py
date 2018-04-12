@@ -15,8 +15,8 @@ admin.site.register(Answer, AnswerAdmin)
 
 
 class TmpMessageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'message_author', 'created')
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ('advert_title', 'slug', 'user', 'author', 'created')
+    prepopulated_fields = {'slug': ('advert_title',)}
     date_hierarchy = 'created'
 
 

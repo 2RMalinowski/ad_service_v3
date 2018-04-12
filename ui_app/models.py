@@ -4,8 +4,8 @@ from django.utils import timezone
 
 class Answer(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=300, unique_for_date='created')
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=300, unique_for_date='created')
     body = models.TextField()
     created = models.DateTimeField(default=timezone.now)
     objects = models.Manager()
@@ -15,11 +15,12 @@ class Answer(models.Model):
 
 
 class TmpMessage(models.Model):
-    title = models.CharField(max_length=200)
+    user = models.CharField(max_length=50)
+    advert_title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=300, unique_for_date='created')
-    message_author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     objects = models.Manager()
 
     def create(self):
@@ -27,7 +28,7 @@ class TmpMessage(models.Model):
         self.save()
 
     def __str__(self):
-            return self.title
+            return self.advert_title
 
 # class MessageManager(models.Manager):
 #     def get_queryset(self):
@@ -66,7 +67,8 @@ class MessagePanel(models.Model):
     selected = models.BooleanField(default=False)
     trash = models.BooleanField(default=False)
     ans_choice = models.TextField(choices=ANSWER_CHOICES, default='ans_this_wk')
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.CharField(max_length=50)
+    advert_title = models.CharField(max_length=200)
     body = models.TextField()
     date = models.DateTimeField(default=timezone.now)  # ultimate date of incoming how to?
     objects = models.Manager()
