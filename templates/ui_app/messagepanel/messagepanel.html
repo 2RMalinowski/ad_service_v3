@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "ui_app/base.html" %}
 
-</body>
-</html>
+{% block title %}messagepanel view{% endblock %}
+
+{% block content %}
+  <h3>messagepanel view</h3>
+  {% for messagepanel in messagepanels %}
+        <h4>{{ messagepanel.advert_title }}</h4>
+    {{ messagepanel.body }}
+
+  {% endfor %}
+{% endblock %}

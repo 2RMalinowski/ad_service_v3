@@ -9,7 +9,7 @@
     <p class="date">
       Created {{ tmpmessage.created }} by {{ tmpmessage.user }}
     </p>
-    {{ tmpmessage.body|truncatewords:60|linebreaks }}
+    {{ tmpmessage.body|truncatewords:30|linebreaks }}
 
   {% endfor %}
 {% endblock %}

@@ -2,10 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.template.response import TemplateResponse
 from django.views.generic import ListView, View
 from .models import Answer, MessagePanel, TmpMessage
-from django import forms
+from . forms import MessagePanelForm
 
 
-class MessagePanelView(View):
+
+
+class MessagePanelView(ListView):
     queryset = MessagePanel.objects.all()
     context_object_name = 'messagepanel'
     template_name = 'ui_app/messagepanel/messagepanel.html'
