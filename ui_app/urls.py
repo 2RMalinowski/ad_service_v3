@@ -8,7 +8,8 @@ urlpatterns = [
     path('answer/', views.AnswerListView.as_view(), name='answer_list'),
     path('tmpmessage/', views.TmpMessageListView.as_view(), name='tmpmssmage_list'),
     path('messagepanel/', views.MessagePanelView.as_view(), name='messagepanel'),
-    # path('<int:year>/<int:month>/<int:day>/\<answer>', views.answer_list, name='answer_list'),
+    # path('answer/<int:pk>', views.AnswerListView.as_view(), name='answer_detail'),
+    # path('<int:year>/<int:month>/<int:day>/\<answer>', views.AnswerListView.as_view(), name='answer_detail'),
 
 
 ]

@@ -1,11 +1,13 @@
-{% extends "ui_app/base.html" %}
-
-{% block title %}{{ answer.title }}{% endblock %}
+{% extends 'ui_app/base.html' %}
 
 {% block content %}
-  <h1>{{ answer.title }}</h1>
-  <p class="date">
-    Published {{ answer.created }} by {{ answer.author }}
-  </p>
-  {{ answer.body|linebreaks }}
+    <div class="answer">
+        {% if answer.published_date %}
+            <div class="date">
+                {{ answer.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ answer.title }}</h1>
+        <p>{{ answer.text|linebreaksbr }}</p>
+    </div>
 {% endblock %}
