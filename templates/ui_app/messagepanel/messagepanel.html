@@ -1,12 +1,47 @@
 {% extends "ui_app/base.html" %}
 
-{% block title %}messagepanel view{% endblock %}
+{% block title %}messagepanel{% endblock %}
 
 {% block content %}
-  <h3>messagepanel view</h3>
-  {% for messagepanel in messagepanels %}
-        <h4>{{ messagepanel.advert_title }}</h4>
-    {{ messagepanel.body }}
+  <h3>messagepanel</h3>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
 
+<table class="messagepanel">
+      <thead>
+      <tr>
+          <th>user</th>
+          <th>advert</th>
+          <th>date</th>
+          <th>checkbox</th>
+          <th>trash</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for tmpmessage in tmpmessages %}
+  <tr>
+      <td>{{ tmpmessage.user }}</td>
+      <td><h5>{{ tmpmessage.advert_title }}</h5>{{ tmpmessage.body|truncatewords:30|linebreaks }}</td>
+      <td>{{ tmpmessage.created }}</td>
+      <td>
+          <form action="" method="get">
+              <input type="checkbox" name="" value=""><br>
+          </form>
+      </td>
+      <td>
+          <p>
+              <a href="#">
+                  <span class="glyphicon glyphicon-trash"></span>
+              </a>
+          </p>
+      </td>
+  </tr>
   {% endfor %}
+    </table>
 {% endblock %}

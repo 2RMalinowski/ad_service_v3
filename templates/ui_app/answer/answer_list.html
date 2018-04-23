@@ -6,12 +6,12 @@
   <h2>answers view</h2>
   {% for answer in answers %}
     <h3>
-      <a href="{{ answer.get_absolute_url }}">
+      <!--<a href="{{ answer.get_absolute_url }}">-->
         {{ answer.title }}
-      </a>
+      <!--</a>-->
     </h3>
     <p class="date">
-      Published {{ answer.publish }} by {{ answer.author }}
+      Published {{ answer.created }} by {{ answer.author }}
     </p>
     {{ answer.body|truncatewords:60|linebreaks }}
   {% endfor %}

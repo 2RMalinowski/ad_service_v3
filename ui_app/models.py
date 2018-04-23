@@ -71,7 +71,7 @@ class MessagePanel(models.Model):
     user = models.CharField(max_length=50)
     advert_title = models.CharField(max_length=200)
     body = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(default=timezone.now)
     # date = models.DateTimeField(default=timezone.now)  # ultimate date of incoming how to?
     # objects = models.Manager()
     # incoming = MessageManager()

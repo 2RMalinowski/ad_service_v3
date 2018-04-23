@@ -5,13 +5,6 @@ from .models import Answer, MessagePanel, TmpMessage
 from . forms import MessagePanelForm
 
 
-class MessagePanelView(View):
-
-    def message_panel(request):
-        messagepanels = MessagePanel.objects.all().order_by()
-        return render(request, 'ui_app/messagepanel/messagepanel.html', {'messagepanels': messagepanels})
-
-
 class AnswerListView(ListView):
     queryset = Answer.objects.all()
     context_object_name = 'answers'
@@ -36,6 +29,32 @@ class TmpMessageListView(ListView):
         return render(request, 'ui_app/tmpmessage/tmpmssmage_list.html', {'tmpmessages': tmpmessages})
 
 
-# def temppost_list(request):
-#     tempposts = TempPost.objects.all()
-#     return TemplateResponse(request, 'ui_app/tmpmessage/tmpmessage_list.html', {'tempposts': tempposts})
+# class MessagePanelView(View):
+#
+#     def message_panel(request):
+#         messagepanels = MessagePanel.objects.all().order_by()
+#         return render(request, 'ui_app/messagepanel/messagepanel.html', {'messagepanels': messagepanels})
+
+
+def messagepanel(request):
+    tmpmessages = TmpMessage.objects.all()
+    return render(request, 'ui_app/messagepanel/messagepanel.html', {'tmpmessages': tmpmessages})
+
+
+# def post_new(request):
+#     if request.method == "POST":
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.author = request.user
+#             post.published_date = timezone.now()
+#             post.save()
+#             return redirect('post_detail', pk=post.pk)
+#     else:
+#         form = PostForm()
+#     return render(request, 'blog_app/post_edit.html', {'form': form})
+#
+#
+# def post_detail(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     return render(request, 'blog_app/post_detail.html', {'post': post})

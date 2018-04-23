@@ -21,3 +21,4 @@ class TmpMessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(TmpMessage, TmpMessageAdmin)
+
