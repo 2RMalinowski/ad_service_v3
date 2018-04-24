@@ -1,0 +1,47 @@
+{% extends "ui_app/base.html" %}
+
+{% block title %}messagepanel2{% endblock %}
+
+{% block content %}
+  <h3>messagepanel</h3>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<table class="messagepanel2">
+      <thead>
+      <tr>
+          <th>user</th>
+          <th>advert</th>
+          <th>date</th>
+          <th>checkbox</th>
+          <th>trash</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for messagepanel in messagepanels %}
+  <tr>
+      <td>{{ messagepanel.user }}</td>
+      <td><h5>{{ messagepanel.advert_title }}</h5>{{ messagepanel.body|truncatewords:30|linebreaks }}</td>
+      <td>{{ messagepanel.created }}</td>
+      <td>
+          <form action="" method="get">
+              <input type="checkbox" name="" value=""><br>
+          </form>
+      </td>
+      <td>
+          <p>
+              <a href="#">
+                  <span class="glyphicon glyphicon-trash"></span>
+              </a>
+          </p>
+      </td>
+  </tr>
+  {% endfor %}
+    </table>
+{% endblock %}

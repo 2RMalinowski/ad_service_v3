@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template.response import TemplateResponse
 from django.views.generic import ListView, View
 from .models import Answer, MessagePanel, TmpMessage
-from . forms import MessagePanelForm
+# from . forms import MessagePanelForm
 
 
 class AnswerListView(ListView):
@@ -39,6 +39,11 @@ class TmpMessageListView(ListView):
 def messagepanel(request):
     tmpmessages = TmpMessage.objects.all()
     return render(request, 'ui_app/messagepanel/messagepanel.html', {'tmpmessages': tmpmessages})
+
+
+def messagepanel2(request):
+    messagepanels = TmpMessage.objects.all()
+    return render(request, 'ui_app/messagepanel/messagepanel2.html', {'messagepanels': messagepanels})
 
 
 # def post_new(request):

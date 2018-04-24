@@ -64,19 +64,18 @@ class MessagePanel(models.Model):
         ('ans_blank', 'manual'),  # to discuss
     )
 
-    user = models.ForeignKey(TmpMessage, on_delete=models.CASCADE, related_name='user')
-    advert_title = models.ForeignKey(TmpMessage, on_delete=models.CASCADE, related_name='advert_title')
-    post = models.ForeignKey(TmpMessage, on_delete=models.CASCADE, related_name='body')
-    created = models.ForeignKey(TmpMessage, on_delete=models.CASCADE, related_name='created')
+    post = TmpMessage.objects.all()
     selected = models.BooleanField(default=False)
     trash = models.BooleanField(default=False)
     ans_choice = models.TextField(choices=ANSWER_CHOICES, default='ans_this_wk')
+    answer_box = models.TextField()
+    created = models.DateTimeField(default=timezone.now)
     # date = models.DateTimeField(default=timezone.now)  # ultimate date of incoming how to?
     # objects = models.Manager()
     # incoming = MessageManager()
 
-    # class Meta: ordering = ('created',)
+    class Meta: ordering = ('created',)
 
     def __str__(self):
-            return self.post
+            return self.answer_box
 
