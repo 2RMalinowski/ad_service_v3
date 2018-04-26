@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -10,8 +11,22 @@ class Answer(models.Model):
     created = models.DateTimeField(default=timezone.now)
     objects = models.Manager()
 
+    class Meta:
+        ordering = ('created',)
+
     def __str__(self):
         return self.title
+
+    # def get_absolute_url(self):
+    #     return reverse('ui_app:answer_detail  ',
+    #                    args=[self.created, self.slug])
+
+    def get_absolute_url(self):
+        return reverse('ui_app:answer_detail',
+                       args=[self.created.year,
+                             self.created.strftime('%m'),
+                             self.created.strftime('%d'),
+                             self.slug])
 
 
 class TmpMessage(models.Model):
@@ -22,6 +37,9 @@ class TmpMessage(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     objects = models.Manager()
+
+    class Meta:
+        ordering = ('created',)
 
     def create(self):
         self.created_date = timezone.now()
@@ -61,21 +79,17 @@ class MessagePanel(models.Model):
         ('inv_scnd', 'inv_rptd'),
         ('inv_mr_scnd', 'inv_mr_rptd'),
         ('inv_ms_scnd', 'inv_ms_rptd'),
-        ('ans_blank', 'manual'),  # to discuss
     )
 
     post = TmpMessage.objects.all()
+    answer_txt = Answer.body
     selected = models.BooleanField(default=False)
     trash = models.BooleanField(default=False)
     ans_choice = models.TextField(choices=ANSWER_CHOICES, default='ans_this_wk')
-    answer_box = models.TextField()
-    created = models.DateTimeField(default=timezone.now)
-    # date = models.DateTimeField(default=timezone.now)  # ultimate date of incoming how to?
-    # objects = models.Manager()
-    # incoming = MessageManager()
+    answer_box = models.TextField(verbose_name="content")
+    # date = models.DateTimeField(default=timezone.now)
 
-    class Meta: ordering = ('created',)
+    # class Meta: ordering = ('created',)
 
     def __str__(self):
             return self.answer_box
-

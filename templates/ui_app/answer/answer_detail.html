@@ -2,12 +2,25 @@
 
 {% block content %}
     <div class="answer">
-        {% if answer.published_date %}
+        {% if answer.created %}
             <div class="date">
-                {{ answer.published_date }}
+                {{ answer.created }}
             </div>
         {% endif %}
         <h1>{{ answer.title }}</h1>
         <p>{{ answer.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
+
+
+<!--{% extends "ui_app/base.html" %}-->
+
+<!--{% block title %}{{ answer.title }}{% endblock %}-->
+
+<!--{% block content %}-->
+  <!--<h1>{{ answer.title }}</h1>-->
+  <!--<p class="date">-->
+    <!--Published {{ answer.created }} by {{ answer.author }}-->
+  <!--</p>-->
+  <!--{{ answer.body|linebreaks }}-->
+<!--{% endblock %}-->

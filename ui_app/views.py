@@ -11,12 +11,21 @@ class AnswerListView(ListView):
     template_name = 'ui_app/answer/answer_list.html'
 
     def answer_list(request):
-        answers = Answer.objects.all()
+        answers = Answer.created.all()
         return render(request, 'ui_app/answer/answer_list.html', {'answers': answers})
 
-    def answer_detail(request, pk):
-        answer = get_object_or_404(Answer, pk=pk)
-        return render(request, 'ui_app/answer/answer_detail.html', {'answer': answer})
+    # def answer_detail(request, pk):
+    #     answer = get_object_or_404(Answer, pk=pk)
+    #     return render(request, 'ui_app/answer/answer_detail.html', {'answer': answer})
+
+    def answer_detail(request, year, month, day, answer):
+        answer = get_object_or_404(Answer, slug=answer,
+                                   status='created',
+                                   created__year=year,
+                                   created__month=month,
+                                   created__day=day)
+        return render(request,
+                      'ui_app/answer/answer_detail.html', {'answer': answer})
 
 
 class TmpMessageListView(ListView):

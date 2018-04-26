@@ -12,14 +12,14 @@
         <a href="#contact">Contact</a>
     </div>
 </div>
-
+<button type="submit" class="save btn btn-default">Send</button>
 <table class="messagepanel2">
       <thead>
       <tr>
           <th>user</th>
           <th>advert</th>
           <th>date</th>
-          <th>checkbox</th>
+          <th>chbox</th>
           <th>trash</th>
       </tr>
     </thead>
@@ -27,7 +27,14 @@
   {% for messagepanel in messagepanels %}
   <tr>
       <td>{{ messagepanel.user }}</td>
-      <td><h5>{{ messagepanel.advert_title }}</h5>{{ messagepanel.body|truncatewords:30|linebreaks }}</td>
+      <td><h5>{{ messagepanel.advert_title }}</h5>{{ messagepanel.body|linebreaks }}
+          <h5>answer content</h5>
+          <form method="POST" class="post-form">
+              {{ form.as_p }}
+              {% csrf_token %}
+          </form>
+          {{ messagepanel.answer_box }}
+      </td>
       <td>{{ messagepanel.created }}</td>
       <td>
           <form action="" method="get">
