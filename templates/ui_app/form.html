@@ -1,0 +1,7 @@
+<h4>fill the form</h4>
+<p>{{ msg }}</p>
+<form method="POST">
+{{ form.as_p }}
+{% csrf_token %}
+<button type="submit">Send</button>
+</form>

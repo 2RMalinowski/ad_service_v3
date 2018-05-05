@@ -53,9 +53,7 @@ class TmpMessage(models.Model):
 #         return super(MessageManager, self).get_queryset().filter(status='unread')
 
 
-class MessagePanel(models.Model):
-
-    ANSWER_CHOICES = (
+ANSWER_CHOICES = (
         ('ans_this_wk', 'this_week'),
         ('ans_this_wk<18', 'this_week<18'),
         ('ans_mr_this_wk', 'mr_this_week'),
@@ -80,6 +78,9 @@ class MessagePanel(models.Model):
         ('inv_mr_scnd', 'inv_mr_rptd'),
         ('inv_ms_scnd', 'inv_ms_rptd'),
     )
+
+
+class MessagePanel(models.Model):
 
     post = TmpMessage.objects.all()
     answer_txt = Answer.body
