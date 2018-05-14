@@ -10,7 +10,8 @@ TEMP_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY_AS2')
+SECRET_KEY = os.getenv('SECRET_KEY_AS2', default='local-secret-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -65,15 +66,19 @@ WSGI_APPLICATION = 'ad_service3.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ad_service3',
-        'USER': 'postgres',
-        'PASSWORD': os.getenv('PG_PASS'),
-        'HOST': '127.0.0.1',
-        'PORT': 5432
-    }
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL', default='sqlite:///db.sqlite3'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ad_service3',
+#         'USER': 'postgres',
+#         'PASSWORD': os.getenv('PG_PASS'),
+#         'HOST': '127.0.0.1',
+#         'PORT': 5432
+#     }
+# }
 
 
 # Password validation
@@ -114,6 +119,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)

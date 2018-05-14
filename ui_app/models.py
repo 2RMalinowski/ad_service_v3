@@ -54,36 +54,37 @@ class TmpMessage(models.Model):
 
 
 ANSWER_CHOICES = (
-        ('ans_this_wk', 'this_week'),
-        ('ans_this_wk<18', 'this_week<18'),
-        ('ans_mr_this_wk', 'mr_this_week'),
-        ('ans_ms_this_wk', 'ms_this_week'),
-        ('ans_next_wk', 'next_week'),
-        ('ans_next_wk<18', 'next_week<18'),
-        ('ans_mr_next_wk', 'mr_next_week'),
-        ('ans_ms_next_wk', 'ms_next_week'),
-        ('ans_other_term', 'other_term'),
-        ('ans_other_term_mr', 'mr_other_term'),
-        ('ans_other_term_ms', 'ms_other_term'),
-        ('ans_office', 'office'),
-        ('inv_m_orday', 'inv_m'),
-        ('inv_m_wknday', 'inv_m_wknd'),
-        ('inv_f_orday', 'inv_f'),
-        ('inv_f_wknday', 'inv_f_wknd'),
-        ('inv_mr_orday', 'inv_mr'),
-        ('inv_mr_wknday', 'inv_mr_wknd'),
-        ('inv_ms_orday', 'inv_ms'),
-        ('inv_ms_wknday', 'inv_ms_wknd'),
-        ('inv_scnd', 'inv_rptd'),
-        ('inv_mr_scnd', 'inv_mr_rptd'),
-        ('inv_ms_scnd', 'inv_ms_rptd'),
+        ('answer_this_wk', 'this_week'),
+        ('answer_this_wk<18', 'this_week<18'),
+        ('answer_mr_this_wk', 'mr_this_week'),
+        ('answer_ms_this_wk', 'ms_this_week'),
+        ('answer_next_wk', 'next_week'),
+        ('answer_next_wk<18', 'next_week<18'),
+        ('answer_mr_next_wk', 'mr_next_week'),
+        ('answer_ms_next_wk', 'ms_next_week'),
+        ('answer_other_term', 'other_term'),
+        ('answer_other_term_mr', 'mr_other_term'),
+        ('answer_other_term_ms', 'ms_other_term'),
+        ('answer_office', 'office'),
+        ('invitation_m_orday', 'inv_m'),
+        ('invitation_m_wknday', 'inv_m_wknd'),
+        ('invitation_f_orday', 'inv_f'),
+        ('invitation_f_wknday', 'inv_f_wknd'),
+        ('invitation_mr_orday', 'inv_mr'),
+        ('invitation_mr_wknday', 'inv_mr_wknd'),
+        ('invitation_ms_orday', 'inv_ms'),
+        ('invitation_ms_wknday', 'inv_ms_wknd'),
+        ('invitation_scnd', 'inv_rptd'),
+        ('invitation_mr_scnd', 'inv_mr_rptd'),
+        ('invitation_ms_scnd', 'inv_ms_rptd'),
     )
 
 
 class MessagePanel(models.Model):
 
     post = TmpMessage.objects.all()
-    answer_txt = Answer.body
+    answer_txt = models.TextField(blank=True)
+    # answer_txt = Answer.body
     selected = models.BooleanField(default=False)
     trash = models.BooleanField(default=False)
     ans_choice = models.TextField(choices=ANSWER_CHOICES, default='ans_this_wk')
@@ -93,4 +94,4 @@ class MessagePanel(models.Model):
     # class Meta: ordering = ('created',)
 
     def __str__(self):
-            return self.answer_box
+        return self.answer_box
