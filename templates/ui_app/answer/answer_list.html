@@ -3,17 +3,17 @@
 {% block title %}answers view{% endblock %}
 
 {% block content %}
-  <h3>answers view</h3>
-  {% for answer in answers %}
-    <h3>
-      <a href="{{ answer.get_absolute_url }}">
+<h3>answers view</h3>
+{% for answer in answers %}
+<h3>
+    <a href="{{ answer.get_absolute_url }}">
         {{ answer.title }}
-      </a>
-    </h3>
-    <p class="date">
-      created {{ answer.created }} by {{ answer.author }}
-    </p>
-    {{ answer.body|truncatewords:60|linebreaks }}
-  {% endfor %}
+    </a>
+</h3>
+<p class="date">
+    created {{ answer.created }} by {{ answer.author }}
+</p>
+{{ answer.body|truncatewords:60|linebreaks }}
+{% endfor %}
 {% endblock %}
 

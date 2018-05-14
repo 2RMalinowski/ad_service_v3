@@ -3,7 +3,7 @@
 {% block title %}messagepanel2{% endblock %}
 
 {% block content %}
-  <h3>messagepanel</h3>
+<h3>messagepanel</h3>
 <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Dropdown</button>
     <div id="myDropdown" class="dropdown-content">
@@ -13,42 +13,42 @@
     </div>
 </div>
 <table class="messagepanel">
-      <thead>
-      <tr>
-          <th>user</th>
-          <th>advert</th>
-          <th>date</th>
-          <th>chbox</th>
-          <th>trash</th>
-      </tr>
+    <thead>
+    <tr>
+        <th>user</th>
+        <th>advert</th>
+        <th>date</th>
+        <th>chbox</th>
+        <th>trash</th>
+    </tr>
     </thead>
     <tbody>
-  {% for messagepanel in messagepanels %}
-  <tr>
-      <td>{{ messagepanel.user }}</td>
-      <td><h5>{{ messagepanel.advert_title }}</h5>{{ messagepanel.body|linebreaks }}
-          <h5>answer content</h5>
-          <form method="POST" class="post-form">
-              {{ form.as_p }}
-              {% csrf_token %}
-          </form>
-          {{ messagepanel.answer_box }}
-      </td>
-      <td>{{ messagepanel.created }}</td>
-      <td>
-          <form action="" method="get">
-              <input type="checkbox" name="" value=""><br>
-          </form>
-      </td>
-      <td>
-          <p>
-              <a href="#">
-                  <span class="glyphicon glyphicon-trash"></span>
-              </a>
-          </p>
-      </td>
-  </tr>
-  {% endfor %}
-    </table>
+    {% for messagepanel in messagepanels %}
+    <tr>
+        <td>{{ messagepanel.user }}</td>
+        <td><h5>{{ messagepanel.advert_title }}</h5>{{ messagepanel.body|linebreaks }}
+            <h5>answer content</h5>
+            <form method="POST" class="post-form">
+                {{ form.as_p }}
+                {% csrf_token %}
+            </form>
+            {{ messagepanel.answer_box }}
+        </td>
+        <td>{{ messagepanel.created }}</td>
+        <td>
+            <form action="" method="get">
+                <input type="checkbox" name="" value=""><br>
+            </form>
+        </td>
+        <td>
+            <p>
+                <a href="#">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 <button type="submit" class="save btn btn-default">Send</button>
 {% endblock %}

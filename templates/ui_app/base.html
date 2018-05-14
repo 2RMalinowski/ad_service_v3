@@ -2,36 +2,35 @@
 <html>
 <head>
 
-  <meta charset="UTF-8">
-  <title>{% block title %}{% endblock %}</title>
-          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/ui_app.css' %}">
-x
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/ui_app.css' %}">
 
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-        <!--<link rel="stylesheet" href="https://ma xcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<link rel="stylesheet" href="https://ma xcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
 </head>
 <body>
-  <div class="content container">
+<div class="content container">
     <div class="row">
-      <div class="col-md-8">
-        <div id="content">
-        {% block content %}
-        {% endblock %}
+        <div class="col-md-8">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div id="sidebar"><p>ad_service</p>
+            </div>
         </div>
-        <div id="sidebar"><p>ad_service</p>
-        </div>
-      </div>
     </div>
-  </div>
-      <footer>
-            <p>
-                today is: {% now "jS \o\f F Y H:i" %} | version: {{ version }} |
-            </p>
-        </footer>
+</div>
+<footer>
+    <p>
+        today is: {% now "jS \o\f F Y H:i" %} | version: {{ version }} |
+    </p>
+</footer>
 </body>
 </html>
